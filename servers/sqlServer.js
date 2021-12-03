@@ -1,5 +1,6 @@
 const express = require('express');
 const mysql = require ('mysql2');
+import start from ("../inquirer.js")
 
 const PORT = 3306;
 const app = express();
@@ -20,3 +21,7 @@ const db = mysql.createConnection(
 app.listen(PORT, () => {
      console.log(`SQL server running on port ${PORT}`)
 })
+
+start();
+
+module.exports = db;

@@ -2,10 +2,10 @@
   "name": "workforceone",
   "version": "1.0.0",
   "description": "",
-  "main": "servers/sqlServer.js",
+  "main": "sqlServer.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node servers/sqlServer.js"
+    "start": "node sqlServer.js"
   },
   "author": "",
   "license": "ISC",

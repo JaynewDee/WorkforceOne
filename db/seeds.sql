@@ -5,7 +5,7 @@ VALUES    ("Sales"),
           ("Engineering"),
           ("Janitorial");
 
-INSERT INTO _role (title, salary, dept_id)
+INSERT INTO _role (title, salary, department_id)
 VALUES    ("Intern", 0.00, 4),
           ("Developer", 70000.00, 4),
           ("Manager", 110000.00, 4),
@@ -15,4 +15,4 @@ INSERT INTO employee (first_name, last_name, role_id)
 VALUES    ("Margot", "Fuzzy", 1),
           ("Joshua", "Diehl", 2),
           ("Tristin", "Corliss", 3),
-          ("Joe", "Schlomo", 4)
+          ("Joe", "Schlomo", 4);

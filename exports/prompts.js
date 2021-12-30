@@ -3,8 +3,7 @@ const chalk = require('chalk');
 const menu = [{
      type: 'list',
      name: 'menu',
-     message: `${chalk.blue.bold("Welcome to WorkforceOne!")}
-          What would you like to do?`,
+     message: `What would you like to do?`,
      choices: [
           'View All Departments',
           'View All Roles',

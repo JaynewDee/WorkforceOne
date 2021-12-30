@@ -17,7 +17,7 @@ app.use(express.urlencoded({
 app.use(express.json());
 require('dotenv').config();
 
-const db =
+const db = 
      mysql.createConnection({
                host: 'localhost',
                user: process.env.DB_USER,
@@ -25,7 +25,7 @@ const db =
                database: process.env.DB_NAME
           },
           console.log(`Connected to the ${chalk.blue('|WorkForce|')} DataBase`)
-     );
+     )
 
 
 app.listen(PORT, () => {
@@ -37,7 +37,6 @@ function inquiry() {
      try {
           inquirer.prompt(menu)
                .then((answer) => {
-                    console.log(answer)
                     switch (answer.menu) {
                          case 'View All Departments':
                               db.query('SELECT * FROM department', function (err, results) {
@@ -72,14 +71,14 @@ function inquiry() {
                          case 'Add a Department':
                               inquirer.prompt(dept)
                                    .then((answer) => {
-                                        console.log(answer)
                                         try {
-                                             const sql = `INSERT INTO department (dept_name) VALUES (dept_name)`;
-                                             db.query(sql, answer, (err, result) => {
+                                             const sql = `INSERT INTO department (dept_name) VALUES (?)`;
+                                             db.query(sql, answer.dept, (err, result) => {
                                                   if (err) {
                                                        console.log(err)
                                                   } else {
-                                                       console.table(result)
+                                                       console.log(`Successfully added department ${chalk.green(answer.dept)} to ${chalk.blue('|WorkForce|')} DataBase!`);
+                                                       inquiry();
                                                   }
                                              })
                                         } catch (err) {

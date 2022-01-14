@@ -134,32 +134,23 @@ function inquiry() {
                          case 'Add a Role':
                               inquirer.prompt(role)
                                    .then((answers) => {
-                                        try {
-                                             const {
-                                                  roleRes,
-                                                  salary,
-                                                  roleDept
-                                             } = answers;
-                                             let deptid =
-                                                  db.query(`SELECT id FROM department WHERE dept_name = (?)`, roleDept, (err, result) => {
-                                                       console.log(result)
-                                                       if (err) {
-                                                            console.log(err)
-                                                       } else {
-                                                            return result[0].id;
-                                                       }
-                                                  })
-                                             db.query(`INSERT INTO _role (title, salary, department_id) VALUES (${roleRes}, ${salary}, ${deptid})`, (err, result) => {
-                                                  if (err) throw err;
+                                        const {
+                                             roleRes,
+                                             salary,
+                                             roleDept
+                                        } = answers;
+                                        const sql = 'INSERT INTO _role (title, salary, department_id) VALUES (?, ?, ?)';
+                                        // const params = [roleRes, salary, getid(roleDept)]
+                                        db.query(sql, [roleRes, salary, getid(roleDept)], (err, result) => {
+                                             if (err) {
+                                                  throw err
+                                             } else {
+                                                  console.log(result)
                                                   console.log(`Successfully added role ${chalk.green(roleDept)} to ${chalk.blue('|WorkForce|')} DataBase!`);
                                                   inquiry();
-                                             })
-                                        } catch (err) {
-                                             console.log(err)
-                                        }
+                                             }
+                                        })
                                    })
-                                   .catch((err) => console.log(err))
-
                               break;
                          case 'Add an Employee':
                               break;
@@ -173,3 +164,16 @@ function inquiry() {
 inquiry()
 
 module.exports = deptList;
+
+function getid(dept) {
+     const sql = "SELECT id FROM department WHERE dept_name = (?)"
+     return (
+          db.query(sql, dept, function (err, result) {
+               if (err) {
+                    console.log(err)
+               } else {
+                    console.log(result[0].id)
+                    return result[0].id;
+               }
+          }))
+}

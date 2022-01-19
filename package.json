@@ -2,10 +2,10 @@
   "name": "workforceone",
   "version": "1.0.0",
   "description": "",
-  "main": "sqlServer.js",
+  "main": "server.js",
   "scripts": {
     "seed": "node db/schema.sql db/seeds.sql",
-    "start": "node sqlServer.js"
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
@@ -13,6 +13,7 @@
     "chalk": "^4.1.2",
     "console.table": "^0.10.0",
     "dotenv": "^10.0.0",
+    "errorhandler": "^1.5.1",
     "express": "^4.17.1",
     "figlet": "^1.5.2",
     "firebase-functions": "^3.16.0",

@@ -1,11 +1,12 @@
 #   👩‍💼 *WorkforceOne*  🧑‍💼
 
 ### Employee Management CLI  
-> ||WorkforceOne||
+> ||WorkforceOne||  <br>
+>>  ![license](https://img.shields.io/static/v1?label=License&message=CC0-Universal&color=blue)
 <br>
 
 ## *DESCRIPTION* 
-> This application has been extensively refactored to dispense with fetch API-style routes and instead implement Apollo application-wide to interact with data using GraphQueryLanguage and resolvers.
+> This application was built to assist an administrator of a company with quickly and easily viewing and updating employee information within the company database, using a minimal, attractive command-line interface.
 > 
 >>  
 >> 
@@ -25,34 +26,44 @@ ___
 > - ### **DEVELOPMENT**
 >>>  *What's under the hood?* <br>
 >>>>  
->>>  - As an exercise in the implementation of Apollo client and Apollo server, this app is primarily meant to demonstrate understanding of and the ability of the developer to refactor another developer's codebase to use different, more current technologies.
->>>>  - The refactored app utilizes Apollo as state manager and authenticator of dataflow between server and client.  The traditional route-controller architecture of the previous version has been replaced with resolvers on the server end.  The client uses mutation queries defined by GraphQL on the front-end to serve dynamic data to the react-mediated UI.
+>>>   Application developed using the following tech:  
+>>>   - dotenv node package to hide sensitive user information  
+>>>   - inquirer.js to handle prompts and processing of user input  
+>>>   - mysql2 node package to maintain a connection with the user's MySQL database during use    
+>>>   - chalk node package to style command line text  
+>>>   - console.table package for attractive formatting of database tables
 ___  
 ___
 ___  
 
 > - ### **USAGE**
->>>  *Building a book list* <br>
->>>>  
->>>  - The user can create an account with QuickLib and login to begin an authenticated session.
->>>  - The user types search terms into the input field and upon submitting the search the page will populate with the top 10 search results.  
->>>  - The user clicks the save book button to save any book from the results, and the button deactivates to confirm that the book has been saved.
->>>  - At any point during an active session, the user clicks on the collapsed hamburger menu to reveal options.  Clicking on the "See Books" option authenticates and redirects the user to a page populated by all books the user has previously saved.
+>>>  *Building your workforce* <br>
+>>>>  *NOTE: The user should have node.js installed on their local machine, and be familiar with navigating the command line, to harness this application's functionality*
+>> #### Usage steps:
+>>>  1. Clone the github repo to your local machine @ [WorkforceOne Repo](https://github.com/JaynewDee/WorkforceOne)
+>>>  2. At the root level of the application directory, inside the terminal, run the command  
+>>>      <code>npm install</code>  
+>>>  3. Once all of the necessary packages have been installed, add a file named '.env' at the root level.  
+>>>  4. Within the '.env' file, initialize three environemntal variables like so, with the user's specific information inside each string:  
+>>>      <code> DB_NAME='\<name of your sql database>\' <br> DB_USER='\<sql username>\' <br> DB_PASS='\<sql password>\' </code>  
+>>>  5. Finally, run this command in the terminal:  
+>>>      <code>npm start</code>
 ___  
 ___
 ___  
 > - ### **DEMONSTRATION**
 >>>  *Check it out* <br>
 >>>>  
->>>  ![Book search application landing page](/assets/README-imgs/Home.png)  
+>>>  ![Welcome message and menu](/assets/README-imgs/start.png)  
 ___
->>>  ![Book search application login window](/assets/README-imgs/login.png)
+>>>  ![View all tables](/assets/README-imgs/view-all.png)
 ___
->>>  ![Book search application signup window](/assets/README-imgs/signup.png)
+>>>  ![Add department](/assets/README-imgs/add-dept.png)
 ___
->>>  ![Book search application search results](/assets/README-imgs/results.png)
+>>>  ![Add role](/assets/README-imgs/add-role.png)
 ___
->>>  ![Book search application saved books page](/assets/README-imgs/saved.png)
+>>>  - #### *Walkthrough video:*  
+>>>>  [Google drive link to walkthrough video](https://drive.google.com/file/d/1RLeBtSWWztcZGg_ZOnFbaRNmaDIlLrd2/view)
 ___  
 ___
 ___  

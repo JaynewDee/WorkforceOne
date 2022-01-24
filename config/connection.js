@@ -1,6 +1,9 @@
 const mysql = require('mysql2')
 require('dotenv').config();
 
+// Initialize connection to mysql database,
+//  using the user's environment variables to disguise sensitive account information
+
 const db = mysql.createConnection(
    {
      host: 'localhost',

@@ -1,13 +1,14 @@
 const chalk = require('chalk');
 const inquirer = require('inquirer')
 
-
+// Import module containing inquirer prompts
 const {
    menu,
    dept,
    role,
    addEmployee
 } = require('./prompts/inquirer');
+// Import all query handlers
 const {
    selectDptId,
    insertRole,
@@ -22,7 +23,7 @@ const {
 console.log(`${chalk.red(`WELCOME TO`)}
 ${chalk.blue(`|WorkForceOne|!`)}`)
 
-
+// Handle inquirer-user interaction to read and update database based on user selection
 function inquiry() {
    inquirer.prompt(menu)
       .then(async (answer) => {
@@ -81,4 +82,4 @@ function inquiry() {
       })
 }
 
-inquiry()
+inquiry();

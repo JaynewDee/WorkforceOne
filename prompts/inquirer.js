@@ -1,3 +1,5 @@
+// ALL INQUIRER PROMPT OBJECTS DEFINED HERE
+
 const chalk = require('chalk');
 const db = require('../config/connection')
 

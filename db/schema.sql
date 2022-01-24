@@ -1,3 +1,5 @@
+-- Define the essential structure of database by modeling the fields and attributes of each data object.  
+
 DROP DATABASE IF EXISTS workforce_db;
 CREATE DATABASE workforce_db;
 

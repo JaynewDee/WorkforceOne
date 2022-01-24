@@ -1,3 +1,5 @@
+// INDEX OF SQL QUERY FUNCTIONS
+
 const insertRole = require('./insertRole')
 const insertDpt = require('./insertDpt')
 const selectDptId = require('./selectDptId')

@@ -1,6 +1,9 @@
+
+-- Reverse default constraints
 ALTER TABLE employee DROP FOREIGN KEY employee_ibfk_1;
 ALTER TABLE employee DROP FOREIGN KEY employee_ibfk_2;
 
+-- Insert mock data into tables to initialize fields
 INSERT INTO department (dept_name)
 VALUES    ("Sales"),
           ("Business Development"),

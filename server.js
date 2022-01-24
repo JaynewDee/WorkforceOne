@@ -1,6 +1,13 @@
 const chalk = require('chalk');
 const inquirer = require('inquirer')
 
+
+const {
+   menu,
+   dept,
+   role,
+   addEmployee
+} = require('./prompts/inquirer');
 const {
    selectDptId,
    insertRole,
@@ -10,71 +17,67 @@ const {
    selectAllEmployees,
    omega
 } = require('./queries')
-const {
-   menu,
-   dept,
-   role,
-   addEmployee
-} = require('./prompts/inquirer');
+
+
+console.log(`${chalk.red(`WELCOME TO`)}
+${chalk.blue(`|WorkForceOne|!`)}`)
 
 
 function inquiry() {
-      inquirer.prompt(menu)
-         .then(async (answer) => {
-            switch (answer.menu) {
-               case 'View All Departments':
-                  const departments = await selectAllDpts();
-                  console.table(departments);
-                  inquiry();
-                  break;
-               case 'View All Roles':
-                  const roles = await selectAllRoles();
-                  console.table(roles);
-                  inquiry();
-                  break;
-               case 'View All Employees':
-                  const employees = await selectAllEmployees();
-                  console.table(employees);
-                  inquiry();
-                  break;
-               case 'Add a Department':
-                  inquirer.prompt(dept)
-                     .then(async (answer) => {
-                        insertDpt(answer.dept)
-                        console.log(
-                           `Successfully added department
+   inquirer.prompt(menu)
+      .then(async (answer) => {
+         switch (answer.menu) {
+            case 'View All Departments':
+               const departments = await selectAllDpts();
+               console.table(departments);
+               inquiry();
+               break;
+            case 'View All Roles':
+               const roles = await selectAllRoles();
+               console.table(roles);
+               inquiry();
+               break;
+            case 'View All Employees':
+               const employees = await selectAllEmployees();
+               console.table(employees);
+               inquiry();
+               break;
+            case 'Add a Department':
+               inquirer.prompt(dept)
+                  .then(async (answer) => {
+                     insertDpt(answer.dept)
+                     console.log(
+                        `Successfully added department
                            ${chalk.green(answer.dept)}
                            to
                            ${chalk.blue('|WorkForce|')} DataBase!`);
-                           inquiry();
-                     })
-                  break;
-               case 'Add a Role':
-                  inquirer.prompt(role)
-                     .then((answer) => {
-                        const {
-                           roleDept,
-                           salary,
-                           roleRes
-                        } = answer;
-                        const id = selectDptId(roleDept)
-                        insertRole(roleRes, salary, id)
-
-                        console.log(
-                           `Successfully added role 
-                           ${chalk.green(roleRes)}
+                     inquiry();
+                  })
+               break;
+            case 'Add a Role':
+               inquirer.prompt(role)
+                  .then(async (answer) => {
+                     const {
+                        roleDept,
+                        salary,
+                        roleRes
+                     } = answer;
+                     await selectDptId(roleDept)
+                     .then((response) => {insertRole(roleRes, salary, response)})
+                     console.log(
+                        `Successfully added role 
+               ${chalk.green(roleRes)}
                            to
-                           ${chalk.blue('|WorkForce|')} DataBase!`);
-                        inquiry();
-                     })
-                  break;
-               case 'Add an Employee':
-                  inquirer.prompt(addEmployee)
-                     .then()
-                  break;
-               case 'View Entire WorkForce':
-                  omega()
-            }
+               ${chalk.blue('|WorkForce|')} DataBase!`);
+                  }).then(() => inquiry())
+               break;
+            case 'Add an Employee':
+               inquirer.prompt(addEmployee)
+                  .then()
+               break;
+            case 'View Entire WorkForce':
+               omega()
+         }
       })
 }
 

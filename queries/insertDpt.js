@@ -11,6 +11,6 @@ const insertDpt = async (deptName) => {
          }
       })
    })
-}
+};
 
 module.exports = insertDpt;

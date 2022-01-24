@@ -7,7 +7,8 @@ const selectDptId = async (roleDept) => {
          if (err) {
             reject(new Error("Something went wrong...  @selectDptId"))
          } else {
-            resolve(result);
+            console.log(result)
+            resolve(result[0].id);
          }
       })
    })

@@ -1,3 +1,6 @@
+ALTER TABLE employee DROP FOREIGN KEY employee_ibfk_1;
+ALTER TABLE employee DROP FOREIGN KEY employee_ibfk_2;
+
 INSERT INTO department (dept_name)
 VALUES    ("Sales"),
           ("Business Development"),
@@ -16,3 +19,4 @@ VALUES    ("Margot", "Fuzzy", 1, 3),
           ("Joshua", "Diehl", 2, 3),
           ("Tristin", "Corliss", 3, null),
           ("Joe", "Schlomo", 4, 2);
+
